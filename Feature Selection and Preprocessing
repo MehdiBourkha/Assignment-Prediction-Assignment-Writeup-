@@ -1,0 +1,6 @@
+# Extract relevant features (assuming accelerometer data)
+sensor_cols <- grep("^accel_", names(train_data_clean), value = TRUE)
+train_features <- train_data_clean[, sensor_cols]
+
+# Normalize or scale features
+train_features_scaled <- scale(train_features)
