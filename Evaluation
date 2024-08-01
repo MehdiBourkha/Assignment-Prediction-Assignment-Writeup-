@@ -1,0 +1,9 @@
+# Perform cross-validation (e.g., 5-fold CV)
+cv_results <- cross_val <- cv.randomForest(train_features_scaled, train_labels, nfold = 5)
+
+# View cross-validation results
+print(cv_results)
+
+# Estimate expected out-of-sample error
+expected_error <- 1 - max(cv_results$cv.error)
+expected_error
