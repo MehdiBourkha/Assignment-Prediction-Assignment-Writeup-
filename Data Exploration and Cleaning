@@ -1,0 +1,16 @@
+# Load required libraries
+library(tidyverse)
+
+# Load training data
+train_data <- read.csv("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv")
+
+# Check structure and summary of the dataset
+str(train_data)
+summary(train_data)
+
+# Check for missing values
+colSums(is.na(train_data))
+
+# Remove irrelevant columns (if any)
+irrelevant_cols <- c("X", "user_name", "raw_timestamp_part_1", "raw_timestamp_part_2", "cvtd_timestamp", "new_window", "num_window")
+train_data_clean <- train_data[, !(names(train_data) %in% irrelevant_cols)]
