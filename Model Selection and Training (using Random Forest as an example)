@@ -1,0 +1,9 @@
+# Load required library for Random Forest
+library(randomForest)
+
+# Define target variable
+train_labels <- train_data_clean$classe
+
+# Train Random Forest model
+set.seed(123)  # for reproducibility
+rf_model <- randomForest(train_labels ~ ., data = train_features_scaled, ntree = 500)
