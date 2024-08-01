@@ -1,0 +1,11 @@
+# Load test data
+test_data <- read.csv("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv")
+
+# Clean and preprocess test data similarly to training data
+test_data_clean <- test_data[, !(names(test_data) %in% irrelevant_cols)]
+test_features <- test_data_clean[, sensor_cols]
+test_features_scaled <- scale(test_features)
+
+# Make predictions using the trained model
+predictions <- predict(rf_model, newdata = test_features_scaled)
+predictions
